@@ -36,9 +36,9 @@ export default class Controller {
     // console.log({ file });
   }
 
-  #configureOnFileFormSubmit({ file, description, date }) {
+  #configureOnFileFormSubmit({ file, description }) {
     const query = {};
-    query["date cleared"] = new RegExp(normalizedDate, "i");
+    query["call description"] = new RegExp(description, "i");
 
     if (this.#view.workerIsEnabled()) {
       this.#worker.postMessage({ file, query });

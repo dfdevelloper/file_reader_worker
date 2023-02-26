@@ -31,8 +31,7 @@ export default class View {
       this.updateDegugLog("");
       const form = new FormData(e.currentTarget);
       const description = form.get("description");
-      const date = form.get("date");
-      handler({ file, description, date });
+      handler({ file, description });
     });
   }
 
