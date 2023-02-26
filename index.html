@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Reader - Worker</title>
+    <style>
+      .form-group {
+        margin: 10px;
+      }
+
+      .box {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <form id="form">
+        <div class="form-group">
+          <label for="description">Find for description</label>
+          <input type="text" name="description" id="description" />
+        </div>
+        <!-- <div class="form-group">
+          <label for="date">Date:</label>
+          <input
+            type="date"
+            id="date"
+            min="2013-12-31"
+            max="2016-01-01"
+            name="date"
+          />
+        </div> -->
+        <div class="form-group">
+          <label for="csv-file">CSV File</label>
+          <input type="file" accept=".csv" name="csv-file" id="csv-file" />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="checkbox"
+            checked
+            accept=".csv"
+            name="worker"
+            id="worker"
+          />
+          <label for="worker">Should use worker threads?</label>
+        </div>
+        <div class="form-group">
+          <input type="submit" id="button" value="Search" />
+          <input type="reset" value="Reset" />
+        </div>
+
+        <div class="form-group">
+          <output id="file-size"></output>
+        </div>
+
+        <div class="form-group">
+          <label for="progress">Processing progress:</label>
+          <progress id="progress" name="progress" value="0" max="100">
+            0%
+          </progress>
+        </div>
+
+        <div class="form-group">
+          <output id="debug"></output>
+        </div>
+      </form>
+    </div>
+
+    <div class="box">
+      <img
+        src="./assets/945d92f8edde5a58e9b2185e3727353e.gif"
+        width="200px"
+        height="200p"
+        alt=""
+      />
+    </div>
+
+    <script src="src/index.js" type="module"></script>
+    <script>
+      const box = document.querySelector(".box");
+
+      function moveBox() {
+        let positionX = 0;
+        let positionY = 250;
+        const maxWidth = window.innerWidth - box.offsetWidth;
+        const maxHeight = window.innerHeight - box.offsetHeight;
+        const intervalId = setInterval(() => {
+          if (positionX >= maxWidth && positionY >= maxHeight) {
+            positionX = 0;
+            positionY = 0;
+          } else if (positionX >= maxWidth) {
+            positionX = 0;
+            positionY++;
+          } else {
+            positionX++;
+          }
+          box.style.top = positionY + "px";
+          box.style.left = positionX + "px";
+        }, 10);
+      }
+
+      moveBox();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "file_reader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx browser-sync -w"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.11"
+  },
+  "author": "",
+  "license": "ISC"
+}
